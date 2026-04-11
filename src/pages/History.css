@@ -1,0 +1,468 @@
+/*
+.history-page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 7rem 1.5rem 5rem;
+}
+
+.history-wrapper {
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.history-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.history-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.history-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2rem, 6vw, 3rem);
+  letter-spacing: 0.04em;
+  color: var(--text);
+  line-height: 1;
+}
+
+.history-empty {
+  font-size: 0.85rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid rgba(240, 240, 240, 0.07);
+  border-radius: 4px;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.history-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(232, 255, 0, 0.1);
+  border-radius: 4px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: border-color 0.2s;
+}
+.history-item:hover {
+  border-color: rgba(232, 255, 0, 0.25);
+}
+
+.history-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-date {
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.history-rama {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(232, 255, 0, 0.08);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+}
+
+.history-monedas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.history-moneda-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.history-moneda-label {
+  font-size: 0.68rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.history-moneda-val {
+  font-size: 0.82rem;
+  color: var(--text);
+  letter-spacing: 0.03em;
+}
+
+.history-resultados {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.history-resultado-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.history-resultado-label {
+  font-size: 0.68rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.history-resultado-val {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+}
+
+.history-resultado-val em {
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-left: 0.3rem;
+}
+
+.history-resultado-row--accent .history-resultado-val {
+  color: var(--accent);
+}
+
+.animate-in {
+  animation: slideUp 0.4s ease forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .history-page {
+    padding: 6rem 1rem 4rem;
+  }
+  .history-item {
+    padding: 1.25rem 1rem;
+  }
+  .history-item-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+*/
+
+.history-page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 7rem 1.5rem 5rem;
+}
+
+.history-wrapper {
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Encabezado ── */
+.history-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.history-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.history-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2rem, 6vw, 3rem);
+  letter-spacing: 0.04em;
+  color: var(--text);
+  line-height: 1;
+}
+
+/* ── Filtros ── */
+.history-filters {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(232, 255, 0, 0.12);
+  border-radius: 4px;
+  flex-wrap: wrap;
+}
+
+.history-filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+  min-width: 140px;
+}
+
+.history-filter-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.history-filter-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(240, 240, 240, 0.18);
+  border-radius: 3px;
+  padding: 0.6rem 0.85rem;
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  color-scheme: dark;
+}
+.history-filter-input:focus {
+  border-color: var(--accent);
+}
+
+.history-filter-sep {
+  font-size: 1rem;
+  color: var(--muted);
+  padding-bottom: 0.55rem;
+  flex-shrink: 0;
+}
+
+.history-filter-clear {
+  background: transparent;
+  border: 1px solid rgba(240, 240, 240, 0.18);
+  border-radius: 3px;
+  padding: 0.6rem 1rem;
+  color: var(--muted);
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+  white-space: nowrap;
+  align-self: flex-end;
+}
+.history-filter-clear:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Contador ── */
+.history-count {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── Vacío ── */
+.history-empty {
+  font-size: 0.88rem;
+  color: #aaa;
+  letter-spacing: 0.05em;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid rgba(240, 240, 240, 0.07);
+  border-radius: 4px;
+}
+
+/* ── Lista ── */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.history-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(232, 255, 0, 0.12);
+  border-radius: 4px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: border-color 0.2s;
+}
+.history-item:hover {
+  border-color: rgba(232, 255, 0, 0.28);
+}
+
+.history-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-date {
+  font-size: 0.78rem;
+  color: #bbb;
+  letter-spacing: 0.06em;
+}
+
+.history-rama {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(232, 255, 0, 0.08);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+}
+
+/* ── Monedas ── */
+.history-monedas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.history-moneda-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.history-moneda-label {
+  font-size: 0.7rem;
+  color: #999;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.history-moneda-val {
+  font-size: 0.88rem;
+  color: #e0e0e0;
+  letter-spacing: 0.03em;
+  font-weight: 400;
+}
+
+/* ── Resultados ── */
+.history-resultados {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.history-resultado-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.history-resultado-label {
+  font-size: 0.7rem;
+  color: #999;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.history-resultado-val {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+  color: #f0f0f0;
+}
+
+.history-resultado-val em {
+  font-style: normal;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: #888;
+  margin-left: 0.3rem;
+}
+
+.history-resultado-row--accent .history-resultado-val {
+  color: var(--accent);
+}
+
+/* ── Animación ── */
+.history-animate-in {
+  animation: slideUp 0.4s ease forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .history-page {
+    padding: 6rem 1rem 4rem;
+  }
+  .history-item {
+    padding: 1.25rem 1rem;
+  }
+  .history-item-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .history-filters {
+    gap: 0.75rem;
+  }
+  .history-filter-sep {
+    display: none;
+  }
+}
