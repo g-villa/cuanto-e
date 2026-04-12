@@ -1,5 +1,5 @@
 /*
-import { useState } from "react";
+import React, { useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase/config";
 import { useAuth } from "../context/AuthContext";
@@ -25,21 +25,31 @@ const ChoiceCard = ({ hint, question, choices }) => (
 
 const InputCard = ({ hint, label, type = "text", placeholder, onContinue }) => {
   const [val, setVal] = useState("");
+  const inputRef = React.useRef(null);
   const doIt = () => {
     if (val.trim()) onContinue(val.trim());
   };
+
+  const handleFocus = () => {
+    setTimeout(() => {
+      inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 350);
+  };
+
   return (
     <div className="q-card animate-in">
       {hint && <Hint text={hint} />}
       <label className="q-label">{label}</label>
       <div className="q-input-row">
         <input
+          ref={inputRef}
           className="q-input"
           type={type}
           placeholder={placeholder}
           value={val}
           onChange={(e) => setVal(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && doIt()}
+          onFocus={handleFocus}
           autoFocus
         />
         <button className="q-btn-primary" onClick={doIt}>
@@ -733,7 +743,6 @@ export default function Questions() {
     </main>
   );
 }
-
 */
 
 import React, { useState } from "react";
@@ -800,6 +809,13 @@ const InputCard = ({ hint, label, type = "text", placeholder, onContinue }) => {
 const FinalCard = ({ monedaInput, onReset, results, saveData }) => {
   const [importe, setImporte] = useState("");
   const [showResult, setShowResult] = useState(false);
+  const cardRef = React.useRef(null);
+
+  const handleFocus = () => {
+    setTimeout(() => {
+      cardRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 350);
+  };
 
   const fmt = (n) =>
     n.toLocaleString("es-AR", {
@@ -842,7 +858,7 @@ const FinalCard = ({ monedaInput, onReset, results, saveData }) => {
     <div className="q-final animate-in">
       <p className="q-done">✅ TODO LISTO</p>
 
-      <div className="q-converter-card">
+      <div ref={cardRef} className="q-converter-card">
         <label className="q-label">
           Ingresá el importe en <strong>{monedaInput}</strong>
         </label>
@@ -857,6 +873,7 @@ const FinalCard = ({ monedaInput, onReset, results, saveData }) => {
               setShowResult(false);
             }}
             onKeyDown={(e) => e.key === "Enter" && calc()}
+            onFocus={handleFocus}
             autoFocus
           />
           <span className="q-tag">{monedaInput}</span>
