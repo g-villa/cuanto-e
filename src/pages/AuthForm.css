@@ -1,3 +1,4 @@
+/*
 .auth-page {
   position: relative;
   z-index: 1;
@@ -150,5 +151,178 @@
 @media (max-width: 480px) {
   .auth-card {
     padding: 2rem 1.25rem;
+  }
+}
+*/
+
+.auth-page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* En iOS cuando aparece el teclado, permite scroll */
+  padding: 7rem 1.5rem 5rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(232, 255, 0, 0.15);
+  border-radius: 4px;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  /* Asegura que el card sea visible sobre el teclado */
+  margin: auto;
+}
+
+.auth-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.auth-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  letter-spacing: 0.04em;
+  color: var(--text);
+  line-height: 1;
+  margin-top: -0.5rem;
+}
+
+.auth-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.auth-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.auth-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(240, 240, 240, 0.14);
+  border-radius: 3px;
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  font-size: 1rem; /* mínimo 16px para evitar zoom automático en iOS */
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  /* Evita zoom en iOS al hacer focus */
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 3px;
+}
+.auth-input:focus {
+  border-color: var(--accent);
+}
+.auth-input::placeholder {
+  color: var(--muted);
+}
+
+.auth-error {
+  font-size: 0.78rem;
+  color: #ff4d4d;
+  letter-spacing: 0.03em;
+  padding: 0.6rem 0.85rem;
+  background: rgba(255, 77, 77, 0.08);
+  border: 1px solid rgba(255, 77, 77, 0.2);
+  border-radius: 3px;
+}
+
+.auth-btn {
+  position: relative;
+  overflow: hidden;
+  background: var(--accent);
+  border: 1.5px solid var(--accent);
+  border-radius: 3px;
+  padding: 0.85rem;
+  color: #0a0a0a;
+  font-family: "Inter", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.auth-btn:hover:not(:disabled) {
+  background: transparent;
+  color: var(--accent);
+}
+.auth-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.auth-btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.auth-switch {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.auth-link {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.auth-link:hover {
+  opacity: 0.7;
+}
+
+.animate-in {
+  animation: slideUp 0.4s ease forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-page {
+    padding: 5rem 1rem 4rem;
+    align-items: flex-start;
+  }
+
+  .auth-card {
+    padding: 1.75rem 1.25rem;
   }
 }

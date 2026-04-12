@@ -1,3 +1,4 @@
+/*
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400&display=swap");
 
 *,
@@ -32,6 +33,60 @@ body {
   position: relative;
 }
 
+
+#root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--muted) 1px, transparent 1px),
+    linear-gradient(90deg, var(--muted) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.08;
+  z-index: 0;
+}
+*/
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0a0a0a;
+  --accent: #e8ff00;
+  --text: #f0f0f0;
+  --muted: #555;
+}
+
+html {
+  height: -webkit-fill-available;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+#root {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
 /* Fondo con efecto de cuadrícula */
 #root::before {
   content: "";
@@ -43,4 +98,5 @@ body {
   background-size: 60px 60px;
   opacity: 0.08;
   z-index: 0;
+  pointer-events: none;
 }

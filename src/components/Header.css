@@ -13,6 +13,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(232, 255, 0, 0.08);
+  gap: 0.75rem;
 }
 
 .header-logo {
@@ -21,6 +22,8 @@
   letter-spacing: 0.05em;
   color: var(--text);
   user-select: none;
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
 .header-logo span {
@@ -30,7 +33,9 @@
 .header-nav {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 .btn {
@@ -68,36 +73,62 @@
   color: var(--accent);
 }
 
-
-@media (max-width: 480px) {
-  .header {
-    padding: 1rem 1.25rem;
-  }
-
-  .header-logo {
-    font-size: 1.4rem;
-  }
-
-  .btn {
-    font-size: 0.7rem;
-    padding: 0.45rem 0.85rem;
-    letter-spacing: 0.06em;
-  }
-}
-
-.header-logo {
-  cursor: pointer;
-}
-
-.header-logo {
-  cursor: pointer;
-}
-
 .header-username {
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem 1.5rem;
+  }
+
+  .header-logo {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    font-size: 0.72rem;
+    padding: 0.5rem 0.9rem;
+    letter-spacing: 0.07em;
+  }
+
+  .header-username {
+    max-width: 90px;
+    font-size: 0.68rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.85rem 1rem;
+  }
+
+  .header-logo {
+    font-size: 1.25rem;
+  }
+
+  .header-nav {
+    gap: 0.35rem;
+  }
+
+  .btn {
+    font-size: 0.65rem;
+    padding: 0.4rem 0.65rem;
+    letter-spacing: 0.04em;
+  }
+
+  .header-username {
+    display: none;
+  }
 }
 */
 
@@ -106,16 +137,20 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1.2rem 2.5rem;
-  background: rgba(10, 10, 10, 0.75);
+  background: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(232, 255, 0, 0.08);
   gap: 0.75rem;
+  /* Fix iOS Safari fixed positioning after re-render */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .header-logo {
@@ -151,6 +186,8 @@
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .btn-ghost {

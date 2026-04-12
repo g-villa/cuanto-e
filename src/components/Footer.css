@@ -19,81 +19,6 @@
   flex: 1;
 }
 
-
-.footer-brand {
-  font-family: "Inter", sans-serif;
-  font-size: 0.95rem; 
-  letter-spacing: 0.05em;
-  color: var(--muted);
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  transition: color 0.2s ease;
-}
-
-.footer-brand:hover {
-  color: var(--text);
-}
-
-.footer-tm {
-  font-size: 0.6rem;
-  vertical-align: super;
-  color: var(--muted);
-  letter-spacing: 0;
-}
-
-.footer-right {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.footer-logo {
-  height: 60px;
-  width: auto;
-  object-fit: contain;
-}
-
-@media (max-width: 480px) {
-  .footer {
-    padding: 0.65rem 1.25rem;
-  }
-
- 
-  .footer-brand {
-    font-size: 0.95rem;
-    letter-spacing: 0.03em;
-  }
-  
-  .footer-logo {
-    height: 42px; 
-  }
-}
-
-*/
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 2rem;
-  background: rgba(10, 10, 10, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(232, 255, 0, 0.08);
-}
-
-.footer-spacer {
-  flex: 1;
-}
-
 .footer-brand {
   text-decoration: none;
   cursor: pointer;
@@ -148,6 +73,88 @@
 
   .footer-logo {
     cursor: pointer;
+    height: 32px;
+  }
+}
+*/
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(232, 255, 0, 0.08);
+  /* Fix iOS Safari fixed positioning after re-render */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.footer-spacer {
+  flex: 1;
+}
+
+.footer-brand {
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  text-decoration: none;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.footer-brand:hover {
+  color: var(--text);
+}
+
+.footer-tm {
+  font-size: 0.6rem;
+  vertical-align: super;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+
+.footer-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.footer-logo {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 0.65rem 1.25rem;
+  }
+
+  .footer-brand {
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+  }
+
+  .footer-logo {
     height: 32px;
   }
 }
