@@ -63,6 +63,13 @@ const InputCard = ({ hint, label, type = "text", placeholder, onContinue }) => {
 const FinalCard = ({ monedaInput, onReset, results, saveData }) => {
   const [importe, setImporte] = useState("");
   const [showResult, setShowResult] = useState(false);
+  const cardRef = React.useRef(null);
+
+  const handleFocus = () => {
+    setTimeout(() => {
+      cardRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 350);
+  };
 
   const fmt = (n) =>
     n.toLocaleString("es-AR", {
@@ -105,7 +112,7 @@ const FinalCard = ({ monedaInput, onReset, results, saveData }) => {
     <div className="q-final animate-in">
       <p className="q-done">✅ TODO LISTO</p>
 
-      <div className="q-converter-card">
+      <div ref={cardRef} className="q-converter-card">
         <label className="q-label">
           Ingresá el importe en <strong>{monedaInput}</strong>
         </label>
@@ -120,6 +127,7 @@ const FinalCard = ({ monedaInput, onReset, results, saveData }) => {
               setShowResult(false);
             }}
             onKeyDown={(e) => e.key === "Enter" && calc()}
+            onFocus={handleFocus}
             autoFocus
           />
           <span className="q-tag">{monedaInput}</span>
@@ -810,6 +818,14 @@ const FinalCard = ({ monedaInput, onReset, results, saveData }) => {
   const [importe, setImporte] = useState("");
   const [showResult, setShowResult] = useState(false);
   const cardRef = React.useRef(null);
+  const inputRef = React.useRef(null);
+
+  // Solo enfoca al montar el componente, nunca al re-renderizar
+  React.useEffect(() => {
+    setTimeout(() => {
+      cardRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 300);
+  }, []);
 
   const handleFocus = () => {
     setTimeout(() => {
@@ -826,6 +842,8 @@ const FinalCard = ({ monedaInput, onReset, results, saveData }) => {
 
   const calc = async () => {
     if (importe && !isNaN(imp)) {
+      // Quita el foco del input para cerrar el teclado y evitar zoom en iOS
+      inputRef.current?.blur();
       setShowResult(true);
       if (saveData) {
         try {
@@ -864,6 +882,7 @@ const FinalCard = ({ monedaInput, onReset, results, saveData }) => {
         </label>
         <div className="q-input-row">
           <input
+            ref={inputRef}
             className="q-input"
             type="number"
             placeholder="0.00"
@@ -874,7 +893,6 @@ const FinalCard = ({ monedaInput, onReset, results, saveData }) => {
             }}
             onKeyDown={(e) => e.key === "Enter" && calc()}
             onFocus={handleFocus}
-            autoFocus
           />
           <span className="q-tag">{monedaInput}</span>
           <button className="q-btn-primary" onClick={calc}>
