@@ -483,9 +483,12 @@
   padding: 0.75rem 1rem;
   color: var(--text);
   font-family: "Inter", sans-serif;
-  font-size: 0.9rem;
+  font-size: 1rem; /* mínimo 16px para evitar zoom automático en iOS */
   outline: none;
   transition: border-color 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+  touch-action: manipulation;
 }
 .q-input:focus {
   border-color: var(--accent);
