@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Cuanto-E</string>
+    <string name="title_activity_main">Cuanto-E</string>
+    <string name="package_name">com.vill4sdevs.cuantoe</string>
+    <string name="custom_url_scheme">com.vill4sdevs.cuantoe</string>
+</resources>
