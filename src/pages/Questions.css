@@ -1,318 +1,4 @@
-/*
-
-.questions-page {
-  position: relative;
-  z-index: 1;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 7rem 1.5rem;
-}
-
-.questions-wrapper {
-  width: 100%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.q-restart-btn {
-  align-self: flex-start;
-  background: transparent;
-  border: none;
-  color: var(--muted);
-  font-family: "Inter", sans-serif;
-  font-size: 0.68rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  cursor: pointer;
-  padding: 0.2rem 0;
-  transition: color 0.2s;
-}
-.q-restart-btn:hover {
-  color: var(--accent);
-}
-
-
-.q-card,
-.q-final,
-.q-converter-card,
-.q-repeat {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(232, 255, 0, 0.12);
-  border-radius: 4px;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.q-final {
-  background: transparent;
-  border: none;
-  padding: 0;
-  gap: 1rem;
-}
-
-.q-converter-card {
-  border-color: rgba(232, 255, 0, 0.2);
-  background: rgba(232, 255, 0, 0.025);
-}
-
-.q-repeat {
-  border-color: rgba(240, 240, 240, 0.07);
-}
-
-
-.q-hint {
-  font-size: 0.67rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--accent);
-  opacity: 0.8;
-}
-
-
-.q-question {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: clamp(1.3rem, 4vw, 1.9rem);
-  letter-spacing: 0.03em;
-  color: var(--text);
-  line-height: 1.15;
-}
-
-.q-choices {
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-}
-
-.q-choice-btn {
-  position: relative;
-  overflow: hidden;
-  background: transparent;
-  border: 1px solid rgba(240, 240, 240, 0.12);
-  border-radius: 3px;
-  padding: 0.9rem 1.25rem;
-  color: var(--text);
-  font-family: "Inter", sans-serif;
-  font-size: 0.82rem;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  text-align: left;
-  transition:
-    border-color 0.2s,
-    color 0s;
-}
-
-.q-choice-btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--accent);
-  transform: translateX(-100%);
-  transition: transform 0.25s ease;
-  z-index: 0;
-}
-
-.q-choice-btn:hover::before {
-  transform: translateX(0);
-}
-.q-choice-btn:hover {
-  color: #0a0a0a;
-  border-color: var(--accent);
-}
-.q-choice-btn span {
-  position: relative;
-  z-index: 1;
-}
-
-.q-choice-btn--outline {
-  border-color: rgba(232, 255, 0, 0.2);
-  color: var(--muted);
-}
-
-
-.q-label {
-  font-family: "Inter", sans-serif;
-  font-size: 0.82rem;
-  color: var(--text);
-  letter-spacing: 0.04em;
-}
-.q-label strong {
-  color: var(--accent);
-}
-
-.q-input-row {
-  display: flex;
-  gap: 0.6rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.q-input {
-  flex: 1;
-  min-width: 0;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(240, 240, 240, 0.14);
-  border-radius: 3px;
-  padding: 0.75rem 1rem;
-  color: var(--text);
-  font-family: "Inter", sans-serif;
-  font-size: 0.9rem;
-  outline: none;
-  transition: border-color 0.2s;
-}
-.q-input:focus {
-  border-color: var(--accent);
-}
-.q-input::placeholder {
-  color: var(--muted);
-}
-.q-input[type="number"]::-webkit-inner-spin-button,
-.q-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-}
-
-.q-tag {
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent);
-  white-space: nowrap;
-}
-
-
-.q-btn-primary {
-  position: relative;
-  overflow: hidden;
-  background: var(--accent);
-  border: 1px solid var(--accent);
-  border-radius: 3px;
-  padding: 0.75rem 1.25rem;
-  color: #0a0a0a;
-  font-family: "Inter", sans-serif;
-  font-size: 0.76rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  white-space: nowrap;
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
-.q-btn-primary:hover {
-  background: transparent;
-  color: var(--accent);
-}
-.q-btn-primary span {
-  position: relative;
-  z-index: 1;
-}
-
-
-.q-done {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: clamp(2rem, 6vw, 3rem);
-  letter-spacing: 0.1em;
-  color: var(--text);
-  text-align: center;
-}
-
-.q-results {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.q-result-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  padding: 0.35rem 0;
-}
-
-.q-result-label {
-  font-size: 0.7rem;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  flex-shrink: 0;
-}
-
-.q-result-value {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 1.4rem;
-  letter-spacing: 0.06em;
-  color: var(--text);
-  text-align: right;
-}
-
-.q-result-value em {
-  font-style: normal;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  color: var(--muted);
-  margin-left: 0.35rem;
-}
-
-.q-result-row--accent .q-result-value {
-  color: var(--accent);
-}
-
-
-.animate-in {
-  animation: slideUp 0.35s ease forwards;
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-@media (max-width: 480px) {
-  .questions-page {
-    padding: 6rem 1rem;
-  }
-
-  .q-card,
-  .q-converter-card,
-  .q-repeat {
-    padding: 1.5rem 1.25rem;
-  }
-
-  .q-input-row {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .q-tag {
-    display: none;
-  }
-
-  .q-btn-primary {
-    text-align: center;
-  }
-
-  .q-result-value {
-    font-size: 1.15rem;
-  }
-}
-*/
+/*Questions.css*/
 
 /* ── Layout ─────────────────────────────────────────────────── */
 .questions-page {
@@ -320,9 +6,10 @@
   z-index: 1;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 7rem 1.5rem;
+  justify-content: flex-start;
+  padding: 4.5rem 1.5rem 7rem 1.5rem;
 }
 
 .questions-wrapper {
@@ -332,6 +19,9 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  flex: 1;
+  justify-content: center;
+  padding: 2rem 0;
 }
 
 /* ── Botón reiniciar ─────────────────────────────────────────── */
@@ -339,7 +29,7 @@
   align-self: flex-start;
   background: transparent;
   border: none;
-  color: var(--muted);
+  color: #999;
   font-family: "Inter", sans-serif;
   font-size: 0.68rem;
   letter-spacing: 0.15em;
@@ -351,6 +41,7 @@
 .q-restart-btn:hover {
   color: var(--accent);
 }
+/*color: */
 
 /* ── Card base ───────────────────────────────────────────────── */
 .q-card,
@@ -424,9 +115,7 @@
   letter-spacing: 0.04em;
   cursor: pointer;
   text-align: left;
-  transition:
-    border-color 0.2s,
-    color 0s;
+  transition: border-color 0.2s, color 0s;
 }
 
 .q-choice-btn::before {
@@ -525,9 +214,7 @@
   text-transform: uppercase;
   cursor: pointer;
   white-space: nowrap;
-  transition:
-    background 0.2s,
-    color 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
 .q-btn-primary:hover {
   background: transparent;
@@ -611,7 +298,7 @@
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 480px) {
   .questions-page {
-    padding: 5.5rem 0.85rem 5rem;
+    padding: 3.2rem 0.85rem 5rem;
   }
 
   .q-card,
@@ -648,5 +335,111 @@
 
   .q-done {
     font-size: clamp(1.6rem, 8vw, 2.5rem);
+  }
+}
+
+/* COTIZACION BAR ────────────────────────────────────────────────*/
+
+.cotiz-bar {
+  width: 100%;
+  background: transparent;
+  padding: 0.5rem 0 0.3rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.cotiz-items {
+  display: flex;
+  gap: 4.4rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.cotiz-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 5px;
+  padding: 0.12rem 0.65rem;
+  min-width: 64px;
+}
+
+.cotiz-nombre {
+  font-family: "Inter", sans-serif;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #888;
+  text-align: center;
+}
+
+.cotiz-valor {
+  font-family: "Inter", sans-serif;
+  font-size: 0.82rem;
+  color: #999;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+/* Footer con separador estilo "· · · texto · · ·" */
+.cotiz-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 420px;
+  padding: 0 1rem;
+}
+
+.cotiz-footer-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to var(--dir, right),
+    transparent,
+    rgba(255, 255, 255, 0.08)
+  );
+}
+
+.cotiz-footer > .cotiz-footer-line:first-child {
+  --dir: right;
+}
+
+.cotiz-footer > .cotiz-footer-line:last-child {
+  --dir: left;
+}
+
+.cotiz-footer-text {
+  font-family: "Inter", sans-serif;
+  font-size: 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #666;
+  white-space: nowrap;
+}
+
+/* Ocultar Cripto en pantallas pequeñas */
+@media (max-width: 480px) {
+  .cotiz-hide-xs {
+    display: none;
+  }
+}
+
+/* Ocultar también Blue en pantallas muy pequeñas */
+@media (max-width: 360px) {
+  .cotiz-hide-sm {
+    display: none;
+  }
+
+  .cotiz-pill {
+    min-width: 56px;
+    padding: 0.22rem 0.5rem;
   }
 }

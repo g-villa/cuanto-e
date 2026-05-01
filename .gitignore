@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 .env
 *.keystore
+
+# Android assets generados por Capacitor
+android/app/src/main/assets/
