@@ -320,9 +320,10 @@
   z-index: 1;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 7rem 1.5rem;
+  justify-content: flex-start;
+  padding: 4.5rem 1.5rem 7rem 1.5rem;
 }
 
 .questions-wrapper {
@@ -332,6 +333,9 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  flex: 1;
+  justify-content: center;
+  padding: 2rem 0;
 }
 
 /* ── Botón reiniciar ─────────────────────────────────────────── */
@@ -339,7 +343,7 @@
   align-self: flex-start;
   background: transparent;
   border: none;
-  color: var(--muted);
+  color: #999;
   font-family: "Inter", sans-serif;
   font-size: 0.68rem;
   letter-spacing: 0.15em;
@@ -351,6 +355,7 @@
 .q-restart-btn:hover {
   color: var(--accent);
 }
+/*color: */
 
 /* ── Card base ───────────────────────────────────────────────── */
 .q-card,
@@ -424,9 +429,7 @@
   letter-spacing: 0.04em;
   cursor: pointer;
   text-align: left;
-  transition:
-    border-color 0.2s,
-    color 0s;
+  transition: border-color 0.2s, color 0s;
 }
 
 .q-choice-btn::before {
@@ -525,9 +528,7 @@
   text-transform: uppercase;
   cursor: pointer;
   white-space: nowrap;
-  transition:
-    background 0.2s,
-    color 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
 .q-btn-primary:hover {
   background: transparent;
@@ -648,5 +649,109 @@
 
   .q-done {
     font-size: clamp(1.6rem, 8vw, 2.5rem);
+  }
+}
+
+/* COTIZACION BAR ────────────────────────────────────────────────*/
+
+.cotiz-bar {
+  width: 100%;
+  background: transparent;
+  padding: 0.5rem 0 0.3rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.cotiz-items {
+  display: flex;
+  gap: 4.4rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.cotiz-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 5px;
+  padding: 0.12rem 0.65rem;
+  min-width: 64px;
+}
+
+.cotiz-nombre {
+  font-family: "Inter", sans-serif;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #888;
+}
+
+.cotiz-valor {
+  font-family: "Inter", sans-serif;
+  font-size: 0.82rem;
+  color: #999;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Footer con separador estilo "· · · texto · · ·" */
+.cotiz-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 420px;
+  padding: 0 1rem;
+}
+
+.cotiz-footer-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to var(--dir, right),
+    transparent,
+    rgba(255, 255, 255, 0.08)
+  );
+}
+
+.cotiz-footer > .cotiz-footer-line:first-child {
+  --dir: right;
+}
+
+.cotiz-footer > .cotiz-footer-line:last-child {
+  --dir: left;
+}
+
+.cotiz-footer-text {
+  font-family: "Inter", sans-serif;
+  font-size: 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #666;
+  white-space: nowrap;
+}
+
+/* Ocultar Cripto en pantallas pequeñas */
+@media (max-width: 480px) {
+  .cotiz-hide-xs {
+    display: none;
+  }
+}
+
+/* Ocultar también Blue en pantallas muy pequeñas */
+@media (max-width: 360px) {
+  .cotiz-hide-sm {
+    display: none;
+  }
+
+  .cotiz-pill {
+    min-width: 56px;
+    padding: 0.22rem 0.5rem;
   }
 }
