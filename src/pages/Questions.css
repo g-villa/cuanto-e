@@ -296,7 +296,7 @@
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 480px) {
   .questions-page {
-    padding: 5.5rem 0.85rem 5rem;
+    padding: 3.2rem 0.85rem 5rem;
   }
 
   .q-card,
