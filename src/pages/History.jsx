@@ -111,6 +111,11 @@ export default function History() {
           )}
         </div>
 
+        {/* ── Botón volver al inicio ── */}
+        <button className="history-btn-home" onClick={() => navigate("/")}>
+          Volver al inicio
+        </button>
+
         {/* ── Contador ── */}
         {!loading && hayFiltros && (
           <p className="history-count animate-in">
